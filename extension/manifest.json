@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "NPC WhatsApp Capture",
+  "version": "1.0",
+  "description": "Sends the numbers of today's WhatsApp chats to the NPC sheet every evening.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://web.whatsapp.com/*", "https://*.vercel.app/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["config.js", "scan-core.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
